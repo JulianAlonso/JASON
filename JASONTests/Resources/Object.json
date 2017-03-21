@@ -1,0 +1,13 @@
+{
+    "string": "lorem",
+    "int": 123,
+    "bool": false,
+    "null": null,
+    "url": "www.diariodeprogramacion.com",
+    "array": [
+              "one",
+              "two",
+              "three",
+              "four"
+             ]
+}

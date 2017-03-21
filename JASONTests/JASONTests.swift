@@ -7,7 +7,6 @@
 //
 
 import XCTest
-@testable import JASON
 
 class JASONTests: XCTestCase {
     

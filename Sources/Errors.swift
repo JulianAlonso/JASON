@@ -12,10 +12,10 @@ public enum JASONError: Error {
     
     case NilJSON(at: String)
     case NotExpectedJSON(at: String)
-    case TypeNotRecognized(typeName: String)
-    case RequiredFieldNotFound(fieldName: String)
-    case Malformed(fieldname: String)
-    case TryingCast(object: Any, to: String)
+    case TypeNotRecognized(typeName: String, at: String)
+    case RequiredFieldNotFound(fieldName: String, at: String)
+    case Malformed(fieldname: String, at: String)
+    case TryingCast(object: Any, to: String, at: String)
     case NotImplementedYet
     
 }

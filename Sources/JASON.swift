@@ -8,31 +8,6 @@
 
 import Foundation
 
-//MARK: - JASON Parsing operators
-precedencegroup ParsingPrecedence {
-    associativity: left
-    higherThan: AdditionPrecedence
-}
-
-infix operator >>> : ParsingPrecedence
-public func >>><T, A>(a: T, f: (_ object: T) throws -> A) rethrows -> A {
-    let value = try f(a)
-    return value
-}
-
-infix operator <<< : ParsingPrecedence
-public func <<<(object: JSON, key: String) throws -> Any {
-    guard let value = object[key] else {
-        throw JASONError.RequiredFieldNotFound(fieldName: key)
-    }
-    return value
-}
-
-infix operator <<<? : ParsingPrecedence
-public func <<<?(object: JSON, key: String) -> Any? {
-    return object[key] as Any?
-}
-
 //MARK: - Creation
 public struct JSON {
     
@@ -58,6 +33,8 @@ public struct JSON {
         }
     }
     
+    var solvingType: Any.Type?
+    var some: String?
     private(set) public var dictionary: [String: Any]?
     private(set) public var array: [[String: Any]]?
     
@@ -69,7 +46,7 @@ public struct JSON {
         case let array as [[String: Any]]:
             self.array = array
         default:
-            throw JASONError.TypeNotRecognized(typeName: "\(type(of: data))")
+            throw JASONError.TypeNotRecognized(typeName: "\(type(of: data))", at: "JSON")
         }
     }
     
@@ -86,10 +63,10 @@ public struct JSON {
             self.init(dictionary)
         case let array as [JSONDictionary]:
             self.init(array)
-        case let _ as NSNull:
+        case is NSNull:
             return nil
         default:
-            throw JASONError.TypeNotRecognized(typeName: "\(type(of: any))")
+            throw JASONError.TypeNotRecognized(typeName: "\(type(of: any))", at: "JSON")
         }
     }
     
@@ -101,12 +78,19 @@ public struct JSON {
         self.array = array
     }
     
-    private init() {
-        self.dictionary = [:]
-    }
+    private init() {}
     
     static func empty() -> JSON {
         return JSON()
+    }
+    
+    public func create<T>(_ type: T.Type) throws -> T where T: JSONInitializable {
+        return try T(self)
+    }
+    
+    
+    public mutating func setSolvingType<T>(_ type: T.Type) {
+        self.solvingType = type
     }
     
 }

@@ -25,10 +25,13 @@ public protocol ExpressibleByJSON: JSONInitializable {
 public extension JSONInitializable where Self: ExpressibleByJSON {
     
     init(_ json: JSON?) throws {
+        print("DOING THINGS")
         guard let json = json else {
             throw JASONError.NilJSON(at: "\(Self.self))")
         }
-        try self.init(json)
+        var _json = json
+        _json.setSolvingType(Self.self)
+        try self.init(_json)
     }
 
 }

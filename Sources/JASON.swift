@@ -33,49 +33,48 @@ public struct JSON {
         }
     }
     
-    var solvingType: Any.Type?
-    var some: String?
+    //TODO: Set string directly
+    var context: Context?
+    
     private(set) public var dictionary: [String: Any]?
     private(set) public var array: [[String: Any]]?
     
-    public init(_ data: Data) throws {
-        let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
+    public init(_ data: Data, options: JSONSerialization.ReadingOptions = .allowFragments) throws {
+        let json = try JSONSerialization.jsonObject(with: data, options: options)
         switch json {
         case let dictionary as [String: Any]:
             self.dictionary = dictionary
         case let array as [[String: Any]]:
             self.array = array
         default:
-            throw JASONError.TypeNotRecognized(typeName: "\(type(of: data))", at: "JSON")
+            throw JASONError.typeNotRecognized(typeName: name(of: json), at: Context(solvingType: self))
         }
     }
     
-    public init?(_ dictionary: [String: Any]?) {
+    public init?(dictionary: [String: Any]?) {
         guard let dictionary = dictionary else { return nil }
         self.dictionary = dictionary
     }
     
-    public init?(_ any: Any) throws {
-        switch any {
-        case let data as Data:
-            try self.init(data)
-        case let dictionary as JSONDictionary:
-            self.init(dictionary)
-        case let array as [JSONDictionary]:
-            self.init(array)
-        case is NSNull:
-            return nil
-        default:
-            throw JASONError.TypeNotRecognized(typeName: "\(type(of: any))", at: "JSON")
-        }
-    }
-    
-    public init(_ dictionary: [String: Any]) {
+    public init(dictionary: [String: Any]) {
         self.dictionary = dictionary
     }
     
-    public init(_ array: [JSONDictionary]) {
+    public init(array: [JSONDictionary]) {
         self.array = array
+    }
+    
+    init(any: Any) throws {
+        switch any {
+        case let data as Data:
+            try self.init(data)
+        case let dictionary as JSON.JSONDictionary:
+            self.init(dictionary: dictionary)
+        case let array as [JSON.JSONDictionary]:
+            self.init(array: array)
+        default:
+            throw JASONError.typeNotRecognized(typeName: name(of: any), at: Context(solvingType: JSON.self))
+        }
     }
     
     private init() {}
@@ -88,9 +87,12 @@ public struct JSON {
         return try T(self)
     }
     
-    
-    public mutating func setSolvingType<T>(_ type: T.Type) {
-        self.solvingType = type
-    }
-    
+}
+
+func name(of: Any) -> String {
+    return String(describing: of)
+}
+
+func name(of: Any.Type) -> String {
+    return String(describing: of)
 }

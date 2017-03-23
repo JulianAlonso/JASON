@@ -33,7 +33,7 @@ fileprivate struct Test {
 extension Test: ExpressibleByJSON {
     
     init(_ json: JSON) throws {
-        self.parsingType = "\(json.solvingType)"
+        self.parsingType = json.context?.solvingTypeName ?? "Unknown"
     }
     
 }

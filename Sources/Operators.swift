@@ -17,31 +17,30 @@ infix operator <<< : ParsingPrecedence
 
 public func <<<<T>(object: JSON, key: String) throws -> T {
     guard let any = object[key] else {
-        throw JASONError.RequiredFieldNotFound(fieldName: key, at: "\(object.solvingType ?? Any.self)")
+        throw JASONError.requiredFieldNotFound(at: current(object, key))
     }
     guard let value = any as? T else {
-        throw JASONError.TryingCast(object: object, to: "\(type(of: T.self))", at: "\(object.solvingType ?? Any.self)")
+        throw JASONError.tryingCast(object: any, to: T.self, at: current(object, key))
     }
     return value
 }
 
 public func <<<<T>(object: JSON, key: String) throws -> T where T: ConvertibleFromJSON {
     guard let any = object[key] else {
-        throw JASONError.RequiredFieldNotFound(fieldName: key, at: "\(object.solvingType ?? Any.self)")
+        throw JASONError.requiredFieldNotFound(at: current(object, key))
     }
-    return try T.from(any, at: "\(object.solvingType ?? Any.self)")
+    return try T.from(any, at: current(object, key))
 }
 
 
 public func <<<<T>(object: JSON, key: String) throws -> [T] where T: JSONInitializable {
     guard let any = object[key] else {
-        throw JASONError.RequiredFieldNotFound(fieldName: key, at: "\(object.solvingType ?? Any.self)")
+        throw JASONError.requiredFieldNotFound(at: current(object, key))
     }
-    let json = try JSON(any)
-    guard let array = json?.array else {
-        throw JASONError.Malformed(fieldname: key, at: "\(object.solvingType ?? Any.self)")
+    guard let array = any as? [JSON.JSONDictionary] else {
+        throw JASONError.tryingCast(object: any, to: Array<T>.self, at: current(object, key))
     }
-    return try array.map { JSON($0) }.map { try $0.create(T.self) }
+    return try array.map { JSON(dictionary: $0) }.map { try $0.create(T.self) }
 }
 
 //Mark - Optional
@@ -50,3 +49,16 @@ infix operator <<<? : ParsingPrecedence
 public func <<<?<T>(object: JSON, key: String) -> T? {
     return object[key] as? T
 }
+
+public func <<<?<T>(object: JSON, key: String) -> T? where T: OptionalConvertibleFromJSON {
+    return T.from(object[key], at: current(object, key))
+}
+
+
+//Creating context
+fileprivate func current(_ json: JSON, _ key: String) -> Context {
+    return json.context?.new(propertyName: key) ?? Context(solvingTypeName: nil, propertyName: key)
+}
+
+
+

@@ -8,9 +8,17 @@
 
 import Foundation
 
-public protocol JSONInitializable {
+public protocol JSONInitializable: ConvertibleFromJSON {
     
     init(_ json: JSON?) throws
+    
+}
+
+public extension ConvertibleFromJSON where Self: JSONInitializable {
+    
+    static func from(_ object: Any, at context: Context) throws -> Self {
+        return try Self(JSON(any: object))
+    }
     
 }
 
@@ -25,17 +33,16 @@ public protocol ExpressibleByJSON: JSONInitializable {
 public extension JSONInitializable where Self: ExpressibleByJSON {
     
     init(_ json: JSON?) throws {
-        print("DOING THINGS")
+        let context = Context(solvingType: Self.self)
         guard let json = json else {
-            throw JASONError.NilJSON(at: "\(Self.self))")
+            throw JASONError.nilJSON(at: context)
         }
         var _json = json
-        _json.setSolvingType(Self.self)
+        _json.context = context
         try self.init(_json)
     }
 
 }
-
 
 
 /// Using this, we can have empty JSON objects
@@ -49,7 +56,7 @@ public extension JSONInitializable where Self: ExpressibleByEmptyJSON {
     
     init(_ json: JSON?) throws {
         if json != nil {
-            throw JASONError.NotExpectedJSON(at: "\(Self.self)")
+            throw JASONError.notExpectedJSON(at: Context(solvingType: Self.self))
         }
         self.init()
     }

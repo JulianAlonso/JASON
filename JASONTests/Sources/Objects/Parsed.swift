@@ -16,6 +16,7 @@ struct Parsed {
     let bool: Bool
     let null: String?
     let url: URL
+    let optURL: URL?
     let array: [String]
 }
 
@@ -28,6 +29,7 @@ extension Parsed: ExpressibleByJSON {
         self.double = try json <<< Parsed.Fields.int
         self.null = json <<<? Parsed.Fields.int
         self.url = try json <<< Parsed.Fields.url
+        self.optURL = json <<<? Parsed.Fields.url
         self.array = try json <<< Parsed.Fields.array
     }
     

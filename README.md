@@ -3,14 +3,15 @@
 <!-- [![CI Status](http://img.shields.io/travis/julianAlonso/JASON.svg?style=flat)](https://travis-ci.org/julianAlonso/JASON) -->
 [![Version](https://img.shields.io/cocoapods/v/JASON.svg?style=flat)](http://cocoapods.org/pods/JASON)
 [![License](https://img.shields.io/cocoapods/l/JASON.svg?style=flat)](http://cocoapods.org/pods/JASON)
-[![Platform](https://img.shields.io/cocoapods/p/JASON.svg?style=flat)](http://cocoapods.org/pods/JASON)
+<!-- [![Platform](https://img.shields.io/cocoapods/p/JASON.svg?style=flat)](http://cocoapods.org/pods/JASON) -->
 
 ## What?
 So simple, library to parse JSON Objects.
 
 ## Where is the value?
 
-**Really simple to use.**
+### Really simple to use.
+
 To make objects created by json you only need implement `ExpressibleByJSON` like this:
 ```
 struct Person {
@@ -40,12 +41,16 @@ Then create the object:
 ```
 
 
-**Forgot optional types.**
+## Forgot optional types.
+
 Yes, right now, you can forgot parsing json like this:
+
 ```swift
+
   if let string = json["string"] as? String {
     //Do something...
   }
+
 ```
 
 JASON works with operators, `<<<` for all types and `<<<?` for optional types.
@@ -71,7 +76,9 @@ When something fail, the error will print `required fild "name" not found at Per
 ## Extending framework types.
 
 Yes, you can directly parse Foundation or whatever framework type. URL for example. We want cast strings into URL directly then...
-```
+
+```swift
+
 ///Create an extension of type implementing ConvertibleFromJSON
 extension URL: ConvertibleFromJSON {
 
@@ -91,9 +98,11 @@ extension URL: ConvertibleFromJSON {
     }
 
 }
+
 ```
 
-## Your custom types
+
+## Your custom types
 
 And when we have nested objects, our objest only need implement `ExpressibleByJSON`, like `Person` declared above.
 Then we can parse `Persons` like parse `String`
@@ -103,7 +112,9 @@ let person: Person = try json <<< "person"
 
 And not only that!
 JASON also will parse for you arrays of persons if you want. when you have a JSON like this...
+
 ```json
+
 {
     "employees": [{
                   "name": "Ram",
@@ -136,25 +147,25 @@ And all work done.
 If your json data comes without key, you can parse it too.
 
 ```json
-{
-    "employees": [{
-                  "name": "Ram",
-                  "email": "ram@gmail.com",
-                  "age": 23
-                  }, {
-                  "name": "Shyam",
-                  "email": "shyam23@gmail.com",
-                  "age": 28
-                  }, {
-                  "name": "John",
-                  "email": "john@gmail.com",
-                  "age": 33
-                  }, {
-                  "name": "Bob",
-                  "email": "bob32@gmail.com",
-                  "age": 41
-                  }]
-}
+
+[{
+"name": "Ram",
+"email": "ram@gmail.com",
+"age": 23
+}, {
+"name": "Shyam",
+"email": "shyam23@gmail.com",
+"age": 28
+}, {
+"name": "John",
+"email": "john@gmail.com",
+"age": 33
+}, {
+"name": "Bob",
+"email": "bob32@gmail.com",
+"age": 41
+}]
+
 ```
 
 ```swift

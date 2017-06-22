@@ -13,17 +13,17 @@ public struct Context {
     let solvingTypeName: String?
     let propertyName: String?
     
-    init(solvingTypeName: String?, propertyName: String? = nil) {
+    public init(solvingTypeName: String?, propertyName: String? = nil) {
         self.solvingTypeName = solvingTypeName
         self.propertyName = propertyName
     }
     
-    init(solvingType: Any.Type, propertyName: String? = nil) {
+    public init(solvingType: Any.Type, propertyName: String? = nil) {
         self.solvingTypeName = name(of: solvingType)
         self.propertyName = propertyName
     }
     
-    init(solvingType: Any, propertyName: String? = nil) {
+    public init(solvingType: Any, propertyName: String? = nil) {
         self.solvingTypeName = name(of: solvingType)
         self.propertyName = propertyName
     }

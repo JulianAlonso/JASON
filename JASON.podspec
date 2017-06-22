@@ -4,8 +4,8 @@ Pod::Spec.new do |s|
   s.summary          = 'Library to parse JSON to objects and Objects to JSON with operators.'
 
   s.description      = <<-DESC
-Library to parse JSON to objects and Objets to JSON with operators.
-This library also will use throws to handling errors.
+Library to parse JSON to objects and Objets to JSON with operators. Parsing infering types. Stop using `guard let`.
+This library also will use throws to handling errors. Provide useful errors.
                        DESC
 
   s.homepage         = 'https://github.com/julianAlonso/JASON'

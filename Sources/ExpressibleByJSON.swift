@@ -55,7 +55,7 @@ public protocol ExpressibleByEmptyJSON: JSONInitializable {
 public extension JSONInitializable where Self: ExpressibleByEmptyJSON {
     
     init(_ json: JSON?) throws {
-        if json != nil {
+        if json?.array != nil || json?.dictionary != nil {
             throw JASONError.notExpectedJSON(at: Context(solvingType: Self.self))
         }
         self.init()

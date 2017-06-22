@@ -10,7 +10,7 @@ import Foundation
 
 //MARK: - Creation
 public struct JSON {
-    
+
     public typealias JSONDictionary = [String: Any]
     
     public subscript(key: String) -> Any? {
@@ -18,7 +18,11 @@ public struct JSON {
             return self.dictionary?[key]
         }
         set(value) {
-            self.dictionary?[key] = value
+            var dictionary = self.any as? JSONDictionary
+            dictionary?[key] = value
+            if let dictionary = dictionary {
+                self.any = dictionary
+            }
         }
     }
     
@@ -28,7 +32,11 @@ public struct JSON {
         }
         set(value) {
             if let value = value {
-                self.array?[key] = value
+                var array = self.any as? [JSONDictionary]
+                array?[key] = value
+                if let array = array {
+                    self.any = array
+                }
             }
         }
     }
@@ -36,48 +44,54 @@ public struct JSON {
     //TODO: Set string directly
     var context: Context?
     
-    private(set) public var dictionary: [String: Any]?
-    private(set) public var array: [[String: Any]]?
+    var any: Any
     
-    public init(_ data: Data, options: JSONSerialization.ReadingOptions = .allowFragments) throws {
+    public var dictionary: [String: Any]? {
+        return self.any as? [String: Any]
+    }
+    public var array: [[String: Any]]? {
+        return self.any as? [[String: Any]]
+    }
+    
+    public init(data: Data, options: JSONSerialization.ReadingOptions = .allowFragments) throws {
         let json = try JSONSerialization.jsonObject(with: data, options: options)
-        switch json {
-        case let dictionary as [String: Any]:
-            self.dictionary = dictionary
-        case let array as [[String: Any]]:
-            self.array = array
-        default:
-            throw JASONError.typeNotRecognized(typeName: name(of: json), at: Context(solvingType: self))
-        }
+        self.any = json
     }
     
-    public init?(dictionary: [String: Any]?) {
+    public init?(_ dictionary: [String: Any]?) {
         guard let dictionary = dictionary else { return nil }
-        self.dictionary = dictionary
+        self.any = dictionary
     }
     
-    public init(dictionary: [String: Any]) {
-        self.dictionary = dictionary
+    public init(_ dictionary: [String: Any]) {
+        self.any = dictionary
     }
     
-    public init(array: [JSONDictionary]) {
-        self.array = array
+    public init(_ array: [JSONDictionary]) {
+        self.any = array
     }
     
-    init(any: Any) throws {
+    public init(_ any: Any) throws {
         switch any {
         case let data as Data:
-            try self.init(data)
-        case let dictionary as JSON.JSONDictionary:
-            self.init(dictionary: dictionary)
-        case let array as [JSON.JSONDictionary]:
-            self.init(array: array)
+            try self.init(data: data)
+        case _ as NSNull:
+            self.init()
+        case let json as JSON:
+            self.init(object: json.any)
         default:
-            throw JASONError.typeNotRecognized(typeName: name(of: any), at: Context(solvingType: JSON.self))
+            self.init(object: any)
         }
     }
     
-    private init() {}
+    private init(object: Any) {
+        self.any = object
+    }
+    
+    
+    private init() {
+        self.any = NSNull()
+    }
     
     static func empty() -> JSON {
         return JSON()

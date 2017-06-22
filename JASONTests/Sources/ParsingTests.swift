@@ -63,5 +63,77 @@ final class ParsingTests: XCTestCase {
             XCTFail("Not expected error: \(error)")
         }
     }
+    
+    func testJSONArrayOfObjectsWithoutKey() {
+        let data = "ArrayOfObjects".data
+        do {
+            let json = try JSON(data)
+            let employeeList: [Employee] = try json<<<
+            
+            assert(!employeeList.isEmpty)
+        } catch {
+            XCTFail("Not expected error: \(error)")
+        }
+    }
+    
+    func testJSONArrayOfObjectsWithoutKeyOptional() {
+        let data = "ArrayOfObjects".data
+        do {
+            let json = try JSON(data)
+            let employeeList: [Employee]? =  json<<<?
+            
+            assert(!(employeeList?.isEmpty ?? true))
+        } catch {
+            XCTFail("Not expected error: \(error)")
+        }
+    }
+    
+    func testJSONString() {
+        let data = "String".data
+        do {
+            let json = try JSON(data)
+            let string = try json<<< as String
+            
+            assert(string == "Hola")
+        } catch {
+            XCTFail("Not expected error: \(error)")
+        }
+    }
+    
+    func testJSONStringOptional() {
+        let data = "String".data
+        do {
+            let json = try JSON(data)
+            let string = json<<<? as String?
+            
+            assert(string == "Hola")
+        } catch {
+            XCTFail("Not expected error: \(error)")
+        }
+    }
+    
+    func testJSONStringArray() {
+        let data = "StringArray".data
+        do {
+            let json = try JSON(data)
+            let strings = try json<<< as [String]
+            
+            assert(!strings.isEmpty)
+        } catch {
+            XCTFail("Not expected error: \(error)")
+        }
+    }
+    
+    func testJSONStringArrayOptional() {
+        let data = "StringArray".data
+        do {
+            let json = try JSON(data)
+            let strings = json<<<? as [String]?
+            
+            assert(!(strings?.isEmpty ?? true))
+        } catch {
+            XCTFail("Not expected error: \(error)")
+        }
+    }
 }
 

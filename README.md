@@ -69,6 +69,7 @@ When we parse JSON objects and the parsing proccess fails, we want get info abou
 When something fail, the error will print `required fild "name" not found at Person.self` for example.
 
 ## Extending framework types.
+
 Yes, you can directly parse Foundation or whatever framework type. URL for example. We want cast strings into URL directly then...
 ```
 ///Create an extension of type implementing ConvertibleFromJSON
@@ -93,6 +94,7 @@ extension URL: ConvertibleFromJSON {
 ```
 
 ## Your custom types
+
 And when we have nested objects, our objest only need implement `ExpressibleByJSON`, like `Person` declared above.
 Then we can parse `Persons` like parse `String`
 ```
@@ -129,6 +131,37 @@ let employees: [Employee] = try json <<< "employees"
 ```
 And all work done.
 
+## No key needed
+
+If your json data comes without key, you can parse it too.
+
+```json
+{
+    "employees": [{
+                  "name": "Ram",
+                  "email": "ram@gmail.com",
+                  "age": 23
+                  }, {
+                  "name": "Shyam",
+                  "email": "shyam23@gmail.com",
+                  "age": 28
+                  }, {
+                  "name": "John",
+                  "email": "john@gmail.com",
+                  "age": 33
+                  }, {
+                  "name": "Bob",
+                  "email": "bob32@gmail.com",
+                  "age": 41
+                  }]
+}
+```
+
+```swift
+
+let employees = try json<<< as [Employee]
+
+```
 
 ## Installation
 
@@ -136,7 +169,7 @@ JASON is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod "JASON"
+pod "JASON-swift"
 ```
 
 ## Author

@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-  s.name             = 'JASON'
+  s.name             = 'JASON-swift'
   s.version          = '0.1.0'
   s.summary          = 'Library to parse JSON to objects and Objects to JSON with operators.'
 

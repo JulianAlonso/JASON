@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import JASON
+@testable import JASOON
 
 final class InitializationTest: XCTest {
     

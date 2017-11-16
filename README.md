@@ -10,6 +10,10 @@ So simple, library to parse JSON Objects.
 
 ## Where is the value?
 
+Provide very useful errors, with them you will know what value is missing and from where. If you are parsing some property to one object wich property is not optional, the error will tell you what property is and what object. Forgot spend time debugging to find out the error.
+Also will tell you if the error is a type error. If you are parsing a string to int, it will fail and also will tell you where and why.
+Debugging JSON parsing never has been so easy.
+
 ### Really simple to use.
 
 To make objects created by json you only need implement `ExpressibleByJSON` like this:
@@ -57,7 +61,7 @@ JASON works with operators, `<<<` for all types and `<<<?` for optional types.
 The usage its simply, get the JSON object (provided by JASON), and get fields.
 
 If you want a string:
-`let string = try json <<< "name" as String`, (if the type is previus declarated like in classes or structs, you dont need the as keyword)
+`let string = try json <<< "name" as String`, (if the type is previus declarated like in classes or structs, you dont need the as keyword `self.name = try json <<< "name"`)
 
 And optional types are the same, but using the optional operator that not throws an error.
 `let optionalString: String? = json <<<? "name"`
@@ -66,12 +70,12 @@ JASON also will infer types for us, any type that implements `ExpressibleByJSON`
 This allow us to have nested types, parse arrays and dictionarys in the most simple way possible and of course, on failing cases will provide us **very useful debug info**
 
 **¿Why throwing?**
-We know that some type requires some fiels, and some fields arent optional, when we got that situation, why we unwrapp optionals all the time?
-We spent a lot of time taking care about this errors, proccessing it, logging some info...
-We don't need optional parsing when types aren't optional, we need not optional types, then we throw very **useful** errors.
+We know that some type requires some fiels, and some fields aren't optional, when we got that situation, why we unwrapp optionals all the time?
+We spent a lot of time taking care about this errors, processing them, logging some info...
+We don't need optional types when types aren't optional, we need not optional types, then we throw very **useful** errors.
 
-When we parse JSON objects and the parsing proccess fails, we want get info about the error, something like `required field "name" not found`, or `trying cast String to Int`, whatever... But we not only want this, when we are making complex request  with nested objects, we also want know what object has failed. JASON provide all that data for us.
-When something fail, the error will print `required fild "name" not found at Person.self` for example.
+When we parse JSON objects and the parsing process fails, we want get info about the error, something like `required field "name" not found`, or `trying cast String to Int`, whatever... But we not only want this, when we are making complex request  with nested objects, we also want know what object has failed. JASON provide all that data for us.
+When something fail, the error will print `required field "name" not found at Person.self` for example.
 
 ## Extending framework types.
 
@@ -176,11 +180,11 @@ let employees = try json<<< as [Employee]
 
 ## Installation
 
-JASON is available through [CocoaPods](http://cocoapods.org). To install
+JASOON is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod "JASON-swift"
+pod "JASOON"
 ```
 
 ## Author

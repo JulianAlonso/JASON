@@ -17,7 +17,7 @@ public protocol JSONInitializable: ConvertibleFromJSON {
 public extension ConvertibleFromJSON where Self: JSONInitializable {
     
     static func from(_ object: Any, at context: Context) throws -> Self {
-        return try Self(JSON(any: object))
+        return try Self.init(JSON(object))
     }
     
 }

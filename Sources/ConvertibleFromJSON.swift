@@ -56,7 +56,7 @@ extension URL: ConvertibleFromJSON {
 extension JSON: ConvertibleFromJSON {
     
     public static func from(_ object: Any, at context: Context) throws -> JSON {
-        return try JSON(any: object)
+        return try JSON(object)
     }
     
 }

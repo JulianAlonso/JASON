@@ -7,12 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		01C062FD1E685AE700E2E07D /* JASON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01C062F31E685AE700E2E07D /* JASON.framework */; };
-		01C063021E685AE700E2E07D /* JASONTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C063011E685AE700E2E07D /* JASONTests.swift */; };
+		01C062FD1E685AE700E2E07D /* JASOON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01C062F31E685AE700E2E07D /* JASOON.framework */; };
 		01C063121E685C0B00E2E07D /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C0630E1E685C0B00E2E07D /* Errors.swift */; };
 		01C063131E685C0B00E2E07D /* ExpressibleByJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C0630F1E685C0B00E2E07D /* ExpressibleByJSON.swift */; };
-		01C063141E685C0C00E2E07D /* JASON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C063101E685C0B00E2E07D /* JASON.swift */; };
-		01C0631B1E685CCE00E2E07D /* JASON.h in Headers */ = {isa = PBXBuildFile; fileRef = 01C063181E685C7000E2E07D /* JASON.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		01C063141E685C0C00E2E07D /* JASOON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C063101E685C0B00E2E07D /* JASOON.swift */; };
+		01C0631B1E685CCE00E2E07D /* JASOON.h in Headers */ = {isa = PBXBuildFile; fileRef = 01C063181E685C7000E2E07D /* JASOON.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3213368F1E80A7E70087502D /* Object.json in Resources */ = {isa = PBXBuildFile; fileRef = 3213368E1E80A7E70087502D /* Object.json */; };
 		321336921E80A8680087502D /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321336911E80A8680087502D /* Helpers.swift */; };
 		321336941E80A8990087502D /* InitializationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321336931E80A8990087502D /* InitializationTests.swift */; };
@@ -42,15 +41,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		01C062F31E685AE700E2E07D /* JASON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JASON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		01C062FC1E685AE700E2E07D /* JASONTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JASONTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		01C063011E685AE700E2E07D /* JASONTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JASONTests.swift; sourceTree = "<group>"; };
+		01C062F31E685AE700E2E07D /* JASOON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JASOON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		01C062FC1E685AE700E2E07D /* JASOONTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JASOONTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		01C063031E685AE700E2E07D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01C0630E1E685C0B00E2E07D /* Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		01C0630F1E685C0B00E2E07D /* ExpressibleByJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpressibleByJSON.swift; sourceTree = "<group>"; };
-		01C063101E685C0B00E2E07D /* JASON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JASON.swift; sourceTree = "<group>"; };
+		01C063101E685C0B00E2E07D /* JASOON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JASOON.swift; sourceTree = "<group>"; };
 		01C063171E685C7000E2E07D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		01C063181E685C7000E2E07D /* JASON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JASON.h; sourceTree = "<group>"; };
+		01C063181E685C7000E2E07D /* JASOON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JASOON.h; sourceTree = "<group>"; };
 		3213368E1E80A7E70087502D /* Object.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Object.json; sourceTree = "<group>"; };
 		321336911E80A8680087502D /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		321336931E80A8990087502D /* InitializationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitializationTests.swift; sourceTree = "<group>"; };
@@ -81,7 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01C062FD1E685AE700E2E07D /* JASON.framework in Frameworks */,
+				01C062FD1E685AE700E2E07D /* JASOON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,7 +91,7 @@
 			children = (
 				01C0630D1E685BC400E2E07D /* Sources */,
 				01C063161E685C7000E2E07D /* iOS */,
-				01C063001E685AE700E2E07D /* JASONTests */,
+				01C063001E685AE700E2E07D /* JASOONTests */,
 				01C062F41E685AE700E2E07D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -101,21 +99,20 @@
 		01C062F41E685AE700E2E07D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				01C062F31E685AE700E2E07D /* JASON.framework */,
-				01C062FC1E685AE700E2E07D /* JASONTests.xctest */,
+				01C062F31E685AE700E2E07D /* JASOON.framework */,
+				01C062FC1E685AE700E2E07D /* JASOONTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		01C063001E685AE700E2E07D /* JASONTests */ = {
+		01C063001E685AE700E2E07D /* JASOONTests */ = {
 			isa = PBXGroup;
 			children = (
 				3213368C1E80A7D70087502D /* Resources */,
 				3213368D1E80A7D70087502D /* Sources */,
-				01C063011E685AE700E2E07D /* JASONTests.swift */,
 				01C063031E685AE700E2E07D /* Info.plist */,
 			);
-			path = JASONTests;
+			path = JASOONTests;
 			sourceTree = "<group>";
 		};
 		01C0630D1E685BC400E2E07D /* Sources */ = {
@@ -123,7 +120,7 @@
 			children = (
 				01C0630E1E685C0B00E2E07D /* Errors.swift */,
 				32EB54CD1E835F93003A8E55 /* Context.swift */,
-				01C063101E685C0B00E2E07D /* JASON.swift */,
+				01C063101E685C0B00E2E07D /* JASOON.swift */,
 				321336951E80AB190087502D /* Operators.swift */,
 				01C0630F1E685C0B00E2E07D /* ExpressibleByJSON.swift */,
 				321336971E80AB440087502D /* ConvertibleFromJSON.swift */,
@@ -135,7 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				01C063171E685C7000E2E07D /* Info.plist */,
-				01C063181E685C7000E2E07D /* JASON.h */,
+				01C063181E685C7000E2E07D /* JASOON.h */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -190,16 +187,16 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01C0631B1E685CCE00E2E07D /* JASON.h in Headers */,
+				01C0631B1E685CCE00E2E07D /* JASOON.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		01C062F21E685AE700E2E07D /* JASON */ = {
+		01C062F21E685AE700E2E07D /* JASOON */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 01C063071E685AE700E2E07D /* Build configuration list for PBXNativeTarget "JASON" */;
+			buildConfigurationList = 01C063071E685AE700E2E07D /* Build configuration list for PBXNativeTarget "JASOON" */;
 			buildPhases = (
 				01C062EE1E685AE700E2E07D /* Sources */,
 				01C062EF1E685AE700E2E07D /* Frameworks */,
@@ -210,14 +207,14 @@
 			);
 			dependencies = (
 			);
-			name = JASON;
+			name = JASOON;
 			productName = JASON;
-			productReference = 01C062F31E685AE700E2E07D /* JASON.framework */;
+			productReference = 01C062F31E685AE700E2E07D /* JASOON.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		01C062FB1E685AE700E2E07D /* JASONTests */ = {
+		01C062FB1E685AE700E2E07D /* JASOONTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 01C0630A1E685AE700E2E07D /* Build configuration list for PBXNativeTarget "JASONTests" */;
+			buildConfigurationList = 01C0630A1E685AE700E2E07D /* Build configuration list for PBXNativeTarget "JASOONTests" */;
 			buildPhases = (
 				01C062F81E685AE700E2E07D /* Sources */,
 				01C062F91E685AE700E2E07D /* Frameworks */,
@@ -228,9 +225,9 @@
 			dependencies = (
 				01C062FF1E685AE700E2E07D /* PBXTargetDependency */,
 			);
-			name = JASONTests;
+			name = JASOONTests;
 			productName = JASONTests;
-			productReference = 01C062FC1E685AE700E2E07D /* JASONTests.xctest */;
+			productReference = 01C062FC1E685AE700E2E07D /* JASOONTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -256,7 +253,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 01C062ED1E685AE700E2E07D /* Build configuration list for PBXProject "JASON" */;
+			buildConfigurationList = 01C062ED1E685AE700E2E07D /* Build configuration list for PBXProject "JASOON" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -268,8 +265,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				01C062F21E685AE700E2E07D /* JASON */,
-				01C062FB1E685AE700E2E07D /* JASONTests */,
+				01C062F21E685AE700E2E07D /* JASOON */,
+				01C062FB1E685AE700E2E07D /* JASOONTests */,
 			);
 		};
 /* End PBXProject section */
@@ -302,7 +299,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01C063141E685C0C00E2E07D /* JASON.swift in Sources */,
+				01C063141E685C0C00E2E07D /* JASOON.swift in Sources */,
 				321336981E80AB440087502D /* ConvertibleFromJSON.swift in Sources */,
 				321336961E80AB190087502D /* Operators.swift in Sources */,
 				32EB54CE1E835F93003A8E55 /* Context.swift in Sources */,
@@ -316,7 +313,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3213369C1E80AF1F0087502D /* JSON.swift in Sources */,
-				01C063021E685AE700E2E07D /* JASONTests.swift in Sources */,
 				321336B61E81C7D20087502D /* Nested.swift in Sources */,
 				321336A31E8143C50087502D /* Parsed.swift in Sources */,
 				321336A51E8143D10087502D /* Employee.swift in Sources */,
@@ -331,7 +327,7 @@
 /* Begin PBXTargetDependency section */
 		01C062FF1E685AE700E2E07D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 01C062F21E685AE700E2E07D /* JASON */;
+			target = 01C062F21E685AE700E2E07D /* JASOON */;
 			targetProxy = 01C062FE1E685AE700E2E07D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -450,7 +446,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.julian.JASON;
+				PRODUCT_BUNDLE_IDENTIFIER = com.julian.JASOON;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -472,7 +468,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.julian.JASON;
+				PRODUCT_BUNDLE_IDENTIFIER = com.julian.JASOON;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
@@ -508,7 +504,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		01C062ED1E685AE700E2E07D /* Build configuration list for PBXProject "JASON" */ = {
+		01C062ED1E685AE700E2E07D /* Build configuration list for PBXProject "JASOON" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				01C063051E685AE700E2E07D /* Debug */,
@@ -517,7 +513,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		01C063071E685AE700E2E07D /* Build configuration list for PBXNativeTarget "JASON" */ = {
+		01C063071E685AE700E2E07D /* Build configuration list for PBXNativeTarget "JASOON" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				01C063081E685AE700E2E07D /* Debug */,
@@ -526,7 +522,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		01C0630A1E685AE700E2E07D /* Build configuration list for PBXNativeTarget "JASONTests" */ = {
+		01C0630A1E685AE700E2E07D /* Build configuration list for PBXNativeTarget "JASOONTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				01C0630B1E685AE700E2E07D /* Debug */,

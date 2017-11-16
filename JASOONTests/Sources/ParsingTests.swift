@@ -6,7 +6,7 @@
 //  Copyright © 2017 Julian. All rights reserved.
 //
 
-@testable import JASON
+@testable import JASOON
 import XCTest
 
 final class ParsingTests: XCTestCase {

@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import JASON
+import JASOON
 
 struct Parsed {
     let string: String

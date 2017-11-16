@@ -87,6 +87,15 @@ public func <<<?<T>(object: JSON, key: String) -> T? where T: OptionalConvertibl
     return T.from(object[key], at: current(object, key))
 }
 
+public func <<<?<T>(object: JSON, key: String) -> [T]? where T: OptionalConvertibleFromJSON {
+    let array = object[key] as? [JSON.JSONDictionary]
+    if let array = array {
+        return array.map { JSON($0) }.flatMap { T.from($0, at: current(object, key)) }
+    }
+    return nil
+}
+
+
 public postfix func <<<?<T>(object: JSON) -> T? {
     return object.any as? T
 }

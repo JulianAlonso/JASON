@@ -112,6 +112,15 @@ public postfix func <<<?<T>(object: JSON) -> [T]? where T: OptionalConvertibleFr
     return nil
 }
 
+//Return an array of no nil elements and filtering elelemtns that cant be converted
+public postfix func <<<?<T>(object: JSON) throws -> [T] where T: OptionalConvertibleFromJSON {
+    guard let array = object.any as? [JSON.JSONDictionary] else {
+        throw JASONError.tryingCast(object: object.any, to: Array<JSON.JSONDictionary>.self, at: current(object, "no key"))
+    }
+    
+    return array.map { JSON($0) }.map { T.from($0.any, at: current(object, "no key")) }.compactMap { $0 }
+}
+
 //Creating context
 fileprivate func current(_ json: JSON, _ key: String) -> Context {
     return json.context?.new(propertyName: key) ?? Context(solvingTypeName: nil, propertyName: key)

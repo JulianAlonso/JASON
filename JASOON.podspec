@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'JASOON'
-  s.version          = '0.1.1'
+  s.version          = '0.1.2'
   s.summary          = 'Library to parse JSON to objects and Objects to JSON with operators.'
 
   s.description      = <<-DESC
